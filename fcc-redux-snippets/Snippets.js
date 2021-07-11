@@ -84,3 +84,38 @@ const loginAction = () => {
     type: "LOGIN",
   };
 };
+
+// ## Use a Switch Statement to Handle Multiple Actions
+
+const defaultState = {
+  authenticated: false,
+};
+
+const authReducer = (state = defaultState, action) => {
+  // main
+  switch (action.type) {
+    case "LOGIN":
+      return {authenticated: true};
+      break;
+    case "LOGOUT":
+      return {authenticated: false};
+      break;
+    default:
+      return defaultState;
+  }
+  // main
+};
+
+const store = Redux.createStore(authReducer);
+
+const loginUser = () => {
+  return {
+    type: "LOGIN",
+  };
+};
+
+const logoutUser = () => {
+  return {
+    type: "LOGOUT",
+  };
+};
