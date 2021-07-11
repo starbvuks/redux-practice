@@ -54,3 +54,33 @@ const loginAction = () => {
 
 // Dispatch the action here:
 store.dispatch(loginAction());
+
+// ## Handle an Action in the Store
+
+/* A reducer takes state and action as arguments, 
+and it always returns a new state. 
+*/
+
+const defaultState = {
+  login: false,
+};
+
+const reducer = (state = defaultState, action) => {
+  // main
+  switch (action.type) {
+    case "LOGIN":
+      return {login: true};
+      break;
+    default:
+      return defaultState;
+  }
+  // main
+};
+
+const store = Redux.createStore(reducer);
+
+const loginAction = () => {
+  return {
+    type: "LOGIN",
+  };
+};
