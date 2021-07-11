@@ -26,3 +26,13 @@ ometimes a Redux action also carries some data.
 const action = {
   type: "LOGIN",
 };
+
+// ## Define an Action Creator
+
+/*An action creator is simply a JavaScript function that returns an action. 
+In other words, action creators create objects that represent action events.
+*/
+
+const actionCreator = () => {
+  return action;
+};
