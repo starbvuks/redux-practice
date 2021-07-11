@@ -1,4 +1,4 @@
-// #Create a Redux Store
+// ## Create a Redux Store
 
 const reducer = (state = 5) => {
   return state;
@@ -10,9 +10,19 @@ const reducer = (state = 5) => {
 
 const store = Redux.createStore(reducer);
 
-// #Get State from the Redux Store
+// ## Get State from the Redux Store
 
 const store = Redux.createStore((state = 5) => state);
-
-// Change code below this line
 const currentState = store.getState();
+
+// ## Define a Redux Action
+
+/* An action is simply a JavaScript object that contains 
+information about an action event that has occurred. The Redux s
+tore receives these action objects, then updates its state accordingly. S
+ometimes a Redux action also carries some data.
+*/
+
+const action = {
+  type: "LOGIN",
+};
