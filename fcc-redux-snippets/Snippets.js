@@ -435,3 +435,27 @@ const addToDo = (todo) => {
 };
 
 const store = Redux.createStore(immutableReducer);
+
+// ## Remove an Item from an Array
+
+const immutableReducer = (state = [0, 1, 2, 3, 4, 5], action) => {
+  switch (action.type) {
+    case "REMOVE_ITEM":
+      // Slice from start to index and then index+1 to end
+      return [
+        ...state.slice(0, action.index),
+        ...state.slice(action.index + 1, state.length),
+      ];
+    default:
+      return state;
+  }
+};
+
+const removeItem = (index) => {
+  return {
+    type: "REMOVE_ITEM",
+    index,
+  };
+};
+
+const store = Redux.createStore(immutableReducer);
