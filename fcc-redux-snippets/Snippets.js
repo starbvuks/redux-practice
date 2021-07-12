@@ -373,3 +373,39 @@ const decAction = () => {
 }; // Define an action creator for decrementing
 
 const store = Redux.createStore(counterReducer); // Define the Redux store here, passing in your reducers
+
+// ## Never Mutate State
+
+/* If you took a snapshot of the state of a Redux app over time, 
+you would see something like state 1, state 2, state 3,state 4, ... and so on 
+where each state may be similar to the last, but each is a distinct piece of data. 
+*/
+
+const ADD_TO_DO = "ADD_TO_DO";
+
+// A list of strings representing tasks to do:
+const todos = [
+  "Go to the store",
+  "Clean the house",
+  "Cook dinner",
+  "Learn to code",
+];
+
+const immutableReducer = (state = todos, action) => {
+  switch (action.type) {
+    case ADD_TO_DO:
+      // Don't mutate state here
+      return [...state, action.todo];
+    default:
+      return state;
+  }
+};
+
+const addToDo = (todo) => {
+  return {
+    type: ADD_TO_DO,
+    todo,
+  };
+};
+
+const store = Redux.createStore(immutableReducer);
