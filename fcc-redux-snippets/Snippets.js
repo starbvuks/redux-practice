@@ -551,3 +551,49 @@ class DisplayMessages extends React.Component {
     );
   }
 }
+
+// same state logic in redux Store
+
+// Define ADD, addMessage(), messageReducer(), and store here:
+
+const ADD = "ADD";
+
+const messageReducer = (state = [], action) => {
+  switch (action.type) {
+    case ADD:
+      return [...state, action.message];
+      break;
+
+    default:
+      return state;
+  }
+};
+
+const addMessage = (message) => {
+  return {
+    type: ADD,
+    message,
+  };
+};
+
+const store = Redux.createStore(messageReducer);
+
+/* The Provider is a wrapper component from React Redux 
+that wraps your React app. This wrapper then allows you to 
+access the Redux store and dispatch functions throughout your 
+component tree. Provider takes two props, the Redux store and the 
+child components of your app
+*/
+
+const Provider = ReactRedux.Provider;
+class AppWrapper extends React.Component {
+  // Render the Provider below this line
+  render() {
+    return (
+      <Provider store={store}>
+        <DisplayMessages />
+      </Provider>
+    );
+  }
+  // Change code above this line
+}
