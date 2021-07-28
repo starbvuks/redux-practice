@@ -490,3 +490,19 @@ const wakeUp = () => {
 };
 
 const store = Redux.createStore(immutableReducer);
+
+// React Redux
+
+// init
+class DisplayMessages extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      input: "",
+      messages: [],
+    };
+  }
+  render() {
+    return <div />;
+  }
+}
